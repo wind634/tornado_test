@@ -9,8 +9,8 @@ import sys
 
 from application import application
 
-from tornado.options import define,options
-define("port", default=8888, help="run on th given port",type=int)
+from tornado.options import define, options
+define("port", default=8888, help="run on th given port", type=int)
 
 
 def main():

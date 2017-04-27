@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from handler.index import IndexHandler
+from handlers.index import IndexHandler
 
 url = [
     (r'/', IndexHandler),
