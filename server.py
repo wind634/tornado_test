@@ -7,7 +7,7 @@ import tornado.httpserver
 
 import sys
 
-from application import application
+from application import Application
 
 from tornado.options import define, options
 define("port", default=8888, help="run on th given port", type=int)
@@ -15,7 +15,7 @@ define("port", default=8888, help="run on th given port", type=int)
 
 def main():
     tornado.options.parse_command_line()
-    http_server = tornado.httpserver.HTTPServer(application)
+    http_server = tornado.httpserver.HTTPServer(Application())
     http_server.listen(options.port)
     print('Development server is running at http://127.0.0.1:%s/' % options.port)
     print('Quit the server with Control-C')
