@@ -1,7 +1,9 @@
 import tornado.web
 
+from handlers.base import BaseHandler
 
-class IndexHandler(tornado.web.RequestHandler):
+
+class IndexHandler(BaseHandler):
     
     def get(self):
         lst = "welcome you."
