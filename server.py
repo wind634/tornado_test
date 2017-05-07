@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#coding:utf-8
+# coding:utf-8
 
 import tornado.ioloop
 import tornado.options
@@ -10,12 +10,16 @@ import sys
 from application import Application
 
 from tornado.options import define, options
+
+from settings import settings
+from url import url
+
 define("port", default=8888, help="run on th given port", type=int)
 
 
 def main():
     tornado.options.parse_command_line()
-    http_server = tornado.httpserver.HTTPServer(Application())
+    http_server = tornado.httpserver.HTTPServer(Application(url, settings))
     http_server.listen(options.port)
     print('Development server is running at http://127.0.0.1:%s/' % options.port)
     print('Quit the server with Control-C')
