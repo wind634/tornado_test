@@ -7,6 +7,9 @@ import tornado.web
 import tornado.options
 import tornado.httpserver
 import tornado.ioloop
+import tornado.netutil
+import tornado.process
+
 
 from tornado.options import options, define
 
@@ -36,14 +39,19 @@ class CustomApplication(tornado.web.Application):
         super(CustomApplication, self).__init__(handlers=handlers, **settings)
         
         
-def create_app():
+def create_app(n):
     tornado.options.parse_command_line()
+    sockets = tornado.netutil.bind_sockets(options.port)
+    tornado.process.fork_processes(n)
+    
     http_server = tornado.httpserver.HTTPServer(CustomApplication(configs, urls))
-    http_server.listen(options.port)
+    # http_server.listen(options.port)
+    http_server.add_sockets(sockets)
+    
     tornado.ioloop.IOLoop.instance().start()
     
 app = create_app
 
 if __name__ == "__main__":
-    app()
-    
+    # app(0)
+    app(1)
