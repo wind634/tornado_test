@@ -1,7 +1,10 @@
 import os
 
+base_dir = os.path.dirname(__file__)
+
 settings = dict(
-    template_path=os.path.join(os.path.dirname(__file__), "templates"),
-    static_path=os.path.join(os.path.dirname(__file__), "static"),
-    debug=True
+    template_path=os.path.join(base_dir, "templates"),
+    static_path=os.path.join(base_dir, "static"),
+    debug=True,
+    title="abcde"
 )
