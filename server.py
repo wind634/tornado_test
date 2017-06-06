@@ -14,8 +14,6 @@ from tornado.options import define, options
 from settings import settings
 from url import url
 
-define("port", default=8888, help="run on th given port", type=int)
-
 
 def main():
     tornado.options.parse_command_line()
