@@ -8,5 +8,9 @@ class IndexHandler(BaseHandler):
         pass
     
     def get(self):
+        sql = ""
+        self.db.excute(sql)
+        self.db.commit()
+        self.db.close()
         lst = "welcome you."
         self.render("index.html", info=lst)
